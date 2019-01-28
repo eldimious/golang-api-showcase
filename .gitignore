@@ -1,0 +1,27 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Application binary
+vibes-api
+
+# build output
+build
+
+.vscode/settings.json
+
+.idea/workspace.xml
+.idea/libraries
+.idea/caches/
+
+# Environment files
+.env
