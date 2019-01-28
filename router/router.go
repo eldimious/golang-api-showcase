@@ -7,6 +7,7 @@ import (
 	"github.com/eldimious/golang-api-showcase/domain/books"
 
 	authorsRoutes "github.com/eldimious/golang-api-showcase/router/authors"
+	booksRoutes "github.com/eldimious/golang-api-showcase/router/books"
 	errors "github.com/eldimious/golang-api-showcase/router/errors"
 	healthRoutes "github.com/eldimious/golang-api-showcase/router/health"
 	"github.com/gin-contrib/cors"
@@ -32,6 +33,6 @@ func NewHTTPHandler(authorSvc authors.AuthorService, booksSvc books.BookService)
 
 	authorsGroup := api.Group("/authors")
 	authorsRoutes.NewRoutesFactory(authorsGroup)(authorSvc)
-
+	booksRoutes.NewRoutesFactory(authorsGroup)(booksSvc)
 	return router
 }
