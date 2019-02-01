@@ -1,5 +1,7 @@
 package books
 
+import "fmt"
+
 // BookService defines book service behavior.
 type BookService interface {
 	CreateBook(*Book) (*Book, error)
@@ -13,6 +15,7 @@ type Service struct {
 }
 
 func (svc *Service) CreateBook(book *Book) (*Book, error) {
+	fmt.Println(*book)
 	return svc.repository.CreateBook(book)
 }
 

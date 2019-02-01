@@ -18,6 +18,7 @@ func toDomainModel(entity *Book) *domain.Book {
 		Id:        entity.Id,
 		Name:      entity.Name,
 		Publisher: entity.Publisher,
+		AuthorId:  entity.AuthorId,
 		CreatedAt: entity.CreatedAt,
 		UpdatedAt: entity.UpdatedAt,
 		DeletedAt: entity.DeletedAt,

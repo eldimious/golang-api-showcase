@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/eldimious/golang-api-showcase/config"
@@ -25,7 +24,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(postgres)
 	booksRepo := booksStore.New(postgres)
 	booksSvc := books.NewService(booksRepo)
 

@@ -1,6 +1,8 @@
 package books
 
 import (
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 	"github.com/pkg/errors"
 
@@ -36,7 +38,7 @@ func (s *Store) AddAuthorFKConstraint() {
 
 func (s *Store) CreateBook(book *domain.Book) (*domain.Book, error) {
 	entity := toDBModel(book)
-
+	fmt.Println(*entity)
 	if err := s.db.Create(entity).Error; err != nil {
 		appErr := domainErrors.NewAppError(errors.Wrap(err, createError), domainErrors.RepositoryError)
 		return nil, appErr
