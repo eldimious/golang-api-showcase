@@ -11,5 +11,4 @@ type Author struct {
 	Surname   string
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	DeletedAt *time.Time
 }

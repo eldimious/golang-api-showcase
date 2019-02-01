@@ -12,6 +12,26 @@ import (
 // NewRoutesFactory create and returns a factory to create routes for the authors
 func NewRoutesFactory(group *gin.RouterGroup) func(service authors.AuthorService) {
 	authorRoutesFactory := func(service authors.AuthorService) {
+		group.GET("/", func(c *gin.Context) {
+			results, err := service.ListAuthors()
+			if err != nil {
+				c.Error(err)
+				return
+			}
+
+			var responseItems = make([]AuthorResponse, len(results))
+
+			for i, element := range results {
+				responseItems[i] = *toResponseModel(&element)
+			}
+
+			response := &ListResponse{
+				Data: responseItems,
+			}
+
+			c.JSON(http.StatusOK, response)
+		})
+
 		group.POST("/", func(c *gin.Context) {
 			author, err := Bind(c)
 			if err != nil {
