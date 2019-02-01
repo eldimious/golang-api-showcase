@@ -6,7 +6,7 @@ import (
 
 // Author struct contains information an author.
 type Author struct {
-	ID        int
+	Id        int
 	Name      string
 	Surname   string
 	CreatedAt time.Time

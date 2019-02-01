@@ -29,7 +29,7 @@ func New(db *gorm.DB) *Store {
 	}
 }
 
-// AddAuthorFKConstraint creates a foreign key constraint for the author ID field
+// AddAuthorFKConstraint creates a foreign key constraint for the author Id field
 func (s *Store) AddAuthorFKConstraint() {
 	s.db.Model(&Book{}).AddForeignKey("author_id", "authors(id)", "CASCADE", "CASCADE")
 }
@@ -63,10 +63,10 @@ func (s *Store) ReadBook(id int) (*domain.Book, error) {
 	return toDomainModel(result), nil
 }
 
-func (s *Store) ListBooks(authorID int) ([]domain.Book, error) {
+func (s *Store) ListBooks(authorId int) ([]domain.Book, error) {
 	var results []Book
 	author := &authorSchema.Author{
-		ID: authorID,
+		Id: authorId,
 	}
 
 	if err := s.db.Model(&author).Related(&results).Error; err != nil {

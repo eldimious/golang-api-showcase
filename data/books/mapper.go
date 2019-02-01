@@ -6,16 +6,16 @@ import (
 
 func toDBModel(entity *domain.Book) *Book {
 	return &Book{
-		ID:        entity.ID,
+		Id:        entity.Id,
 		Name:      entity.Name,
 		Publisher: entity.Publisher,
-		AuthorID:  entity.AuthorID,
+		AuthorId:  entity.AuthorId,
 	}
 }
 
 func toDomainModel(entity *Book) *domain.Book {
 	return &domain.Book{
-		ID:        entity.ID,
+		Id:        entity.Id,
 		Name:      entity.Name,
 		Publisher: entity.Publisher,
 		CreatedAt: entity.CreatedAt,

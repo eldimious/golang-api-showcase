@@ -6,7 +6,7 @@ import (
 
 func toDBModel(entity *domain.Author) *Author {
 	return &Author{
-		ID:      entity.ID,
+		Id:      entity.Id,
 		Name:    entity.Name,
 		Surname: entity.Surname,
 	}
@@ -14,7 +14,7 @@ func toDBModel(entity *domain.Author) *Author {
 
 func toDomainModel(entity *Author) *domain.Author {
 	return &domain.Author{
-		ID:        entity.ID,
+		Id:        entity.Id,
 		Name:      entity.Name,
 		Surname:   entity.Surname,
 		CreatedAt: entity.CreatedAt,

@@ -4,5 +4,5 @@ package books
 type BookRepository interface {
 	CreateBook(*Book) (*Book, error)
 	ReadBook(int) (*Book, error)
-	ListBooks(authorID int) ([]Book, error)
+	ListBooks(authorId int) ([]Book, error)
 }
