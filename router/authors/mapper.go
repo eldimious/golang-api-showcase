@@ -12,4 +12,5 @@ func toResponseModel(entity *domain.Author) *AuthorResponse {
 		CreatedAt: entity.CreatedAt,
 		UpdatedAt: entity.UpdatedAt,
 	}
+
 }

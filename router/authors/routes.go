@@ -40,13 +40,13 @@ func NewRoutesFactory(group *gin.RouterGroup) func(service authors.AuthorService
 				return
 			}
 
-			created, err := service.CreateAuthor(author)
+			newAuthor, err := service.CreateAuthor(author)
 			if err != nil {
 				c.Error(err)
 				return
 			}
 
-			c.JSON(http.StatusCreated, created)
+			c.JSON(http.StatusCreated, *toResponseModel(newAuthor))
 		})
 
 		group.GET("/:authorId", func(c *gin.Context) {
@@ -58,7 +58,7 @@ func NewRoutesFactory(group *gin.RouterGroup) func(service authors.AuthorService
 				return
 			}
 
-			c.JSON(http.StatusOK, result)
+			c.JSON(http.StatusOK, *toResponseModel(result))
 		})
 	}
 
