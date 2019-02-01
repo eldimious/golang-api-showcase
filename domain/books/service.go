@@ -20,8 +20,8 @@ func (svc *Service) ReadBook(id int) (*Book, error) {
 	return svc.repository.ReadBook(id)
 }
 
-func (svc *Service) ListBooks(authorID int) ([]Book, error) {
-	return svc.repository.ListBooks(authorID)
+func (svc *Service) ListBooks(authorId int) ([]Book, error) {
+	return svc.repository.ListBooks(authorId)
 }
 
 // NewService creates a new service struct

@@ -6,10 +6,10 @@ import (
 
 //struct contains information about a book.
 type Book struct {
-	ID        int
+	Id        int
 	Name      string
 	Publisher string
-	AuthorID  int
+	AuthorId  int
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt *time.Time

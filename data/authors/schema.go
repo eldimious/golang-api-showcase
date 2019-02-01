@@ -6,10 +6,9 @@ import (
 
 // struct defines the database model for a Author.
 type Author struct {
-	ID        int `gorm:"primary_key;type:int;"`
+	Id        int `gorm:"primary_key";"AUTO_INCREMENT";`
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	DeletedAt *time.Time
 	Name      string
 	Surname   string
 }
