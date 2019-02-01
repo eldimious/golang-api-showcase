@@ -60,7 +60,7 @@ func NewRoutesFactory(group *gin.RouterGroup) func(service books.BookService) {
 				return
 			}
 
-			c.JSON(http.StatusOK, result)
+			c.JSON(http.StatusOK, *toResponseModel(result))
 		})
 	}
 
