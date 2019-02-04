@@ -24,7 +24,7 @@ type Database struct {
 func NewConfig() (*Config, error) {
 	env.CheckDotEnv()
 	port := env.MustGet("PORT")
-
+	// set default PORT if missing
 	if port == "" {
 		port = "3000"
 	}

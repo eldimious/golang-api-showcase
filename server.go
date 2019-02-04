@@ -25,12 +25,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	// initialize repos and services using DI
 	booksRepo := booksStore.New(db)
 	booksSvc := books.NewService(booksRepo)
-
 	authorsRepo := authorsStore.New(db, booksRepo)
 	booksRepo.AddAuthorFKConstraint() // Author relation must exist before we add the constraint
 	authorsSvc := authors.NewService(authorsRepo)
+
 	httpRouter := router.NewHTTPHandler(authorsSvc, booksSvc)
 	err = http.ListenAndServe(":"+configuration.Port, httpRouter)
 	if err != nil {
