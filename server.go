@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/eldimious/golang-api-showcase/config"
-	postgres "github.com/eldimious/golang-api-showcase/data/database"
+	db "github.com/eldimious/golang-api-showcase/data/database"
 
 	"github.com/eldimious/golang-api-showcase/domain/authors"
 	"github.com/eldimious/golang-api-showcase/domain/books"
@@ -19,15 +19,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	postgres, err := postgres.Connect(configuration.Postgres)
+	// establish DB connection
+	db, err := db.Connect(configuration.Postgres)
 	if err != nil {
 		panic(err)
 	}
-	booksRepo := booksStore.New(postgres)
+	booksRepo := booksStore.New(db)
 	booksSvc := books.NewService(booksRepo)
 
-	authorsRepo := authorsStore.New(postgres, booksRepo)
+	authorsRepo := authorsStore.New(db, booksRepo)
 	booksRepo.AddAuthorFKConstraint() // Author relation must exist before we add the constraint
 	authorsSvc := authors.NewService(authorsRepo)
 	httpRouter := router.NewHTTPHandler(authorsSvc, booksSvc)
@@ -36,5 +36,5 @@ func main() {
 		panic(err)
 	}
 
-	defer postgres.Close()
+	defer db.Close()
 }
