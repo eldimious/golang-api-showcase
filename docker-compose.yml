@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file: .env
+    environment:
+      - ENV=develop
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file: .env
+    
