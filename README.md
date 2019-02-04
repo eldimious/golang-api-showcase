@@ -1,5 +1,5 @@
 # What is this repository for? #
-Node.js app architecture showcase using [Gin](https://github.com/gin-gonic/gin), [PostgreSQL](https://www.postgresql.org/) and [Gorm](https://github.com/jinzhu/gorm) as ORM. You can start your Golang projects building on this boilerplate.
+Golang app architecture showcase using [Gin](https://github.com/gin-gonic/gin), [PostgreSQL](https://www.postgresql.org/) and [Gorm](https://github.com/jinzhu/gorm) as ORM. You can start your Golang projects building on this boilerplate.
 
 # Architecture Overview #
 The app is designed to use a layered architecture. The architecture is heavily influenced by the Clean Architecture and Hexagonal Architecture. [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) is an architecture where `the business rules can be tested without the UI, database, web server, or any external element`. 
