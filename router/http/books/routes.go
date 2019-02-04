@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// NewRoutesFactory create and returns a factory to create routes for the machines
+// NewRoutesFactory create and returns a factory to create routes for the books
 func NewRoutesFactory(group *gin.RouterGroup) func(service books.BookService) {
 	bookRoutesFactory := func(service books.BookService) {
 
