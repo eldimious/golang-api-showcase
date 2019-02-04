@@ -6,10 +6,10 @@ import (
 	"github.com/eldimious/golang-api-showcase/domain/authors"
 	"github.com/eldimious/golang-api-showcase/domain/books"
 
-	authorsRoutes "github.com/eldimious/golang-api-showcase/router/authors"
-	booksRoutes "github.com/eldimious/golang-api-showcase/router/books"
-	errors "github.com/eldimious/golang-api-showcase/router/errors"
-	healthRoutes "github.com/eldimious/golang-api-showcase/router/health"
+	authorsRoutes "github.com/eldimious/golang-api-showcase/router/http/authors"
+	booksRoutes "github.com/eldimious/golang-api-showcase/router/http/books"
+	errors "github.com/eldimious/golang-api-showcase/router/http/errors"
+	healthRoutes "github.com/eldimious/golang-api-showcase/router/http/health"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )

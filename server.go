@@ -8,7 +8,7 @@ import (
 
 	"github.com/eldimious/golang-api-showcase/domain/authors"
 	"github.com/eldimious/golang-api-showcase/domain/books"
-	"github.com/eldimious/golang-api-showcase/router"
+	router "github.com/eldimious/golang-api-showcase/router/http"
 
 	authorsStore "github.com/eldimious/golang-api-showcase/data/authors"
 	booksStore "github.com/eldimious/golang-api-showcase/data/books"
