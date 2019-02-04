@@ -9,7 +9,7 @@ import (
 
 const (
 	local      = "local"
-	develop    = "develop"
+	staging    = "staging"
 	production = "production"
 	env        = "ENV"
 )
@@ -17,7 +17,7 @@ const (
 // MustGet will return the env or panic if not present.
 func MustGet(key string) string {
 	val := os.Getenv(key)
-	if val == "" {
+	if val == "" && key != "PORT" {
 		panic("Env key missing " + key)
 	}
 	return val
