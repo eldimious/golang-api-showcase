@@ -1,11 +1,9 @@
 package books
 
-import "fmt"
-
 // BookService defines book service behavior.
 type BookService interface {
 	CreateBook(*Book) (*Book, error)
-	ReadBook(int) (*Book, error)
+	ReadBook(int, int) (*Book, error)
 	ListBooks(int) ([]Book, error)
 }
 
@@ -15,12 +13,11 @@ type Service struct {
 }
 
 func (svc *Service) CreateBook(book *Book) (*Book, error) {
-	fmt.Println(*book)
 	return svc.repository.CreateBook(book)
 }
 
-func (svc *Service) ReadBook(id int) (*Book, error) {
-	return svc.repository.ReadBook(id)
+func (svc *Service) ReadBook(id int, authorId int) (*Book, error) {
+	return svc.repository.ReadBook(id, authorId)
 }
 
 func (svc *Service) ListBooks(authorId int) ([]Book, error) {

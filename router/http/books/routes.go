@@ -1,7 +1,6 @@
 package books
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -14,18 +13,41 @@ import (
 func NewRoutesFactory(group *gin.RouterGroup) func(service books.BookService) {
 	bookRoutesFactory := func(service books.BookService) {
 
+		group.GET("/:authorId/books", func(c *gin.Context) {
+			authorId, err := strconv.Atoi(c.Param("authorId"))
+			if err != nil {
+				appError := domainErrors.NewAppErrorWithType(domainErrors.NotFound)
+				c.Error(appError)
+				return
+			}
+			results, err := service.ListBooks(authorId)
+			if err != nil {
+				c.Error(err)
+				return
+			}
+
+			var responseItems = make([]BookResponse, len(results))
+
+			for i, element := range results {
+				responseItems[i] = *toResponseModel(&element)
+			}
+
+			response := &ListResponse{
+				Data: responseItems,
+			}
+
+			c.JSON(http.StatusOK, response)
+		})
+
 		group.POST("/:authorId/books", func(c *gin.Context) {
 			authorId, err := strconv.Atoi(c.Param("authorId"))
-			fmt.Println(authorId)
 			if err != nil {
 				appError := domainErrors.NewAppErrorWithType(domainErrors.NotFound)
 				c.Error(appError)
 				return
 			}
 			book, err := Bind(c, authorId)
-			fmt.Println(*book)
 			newBook, err := service.CreateBook(book)
-			fmt.Println(*newBook)
 			if err != nil {
 				c.Error(err)
 				return
@@ -35,7 +57,7 @@ func NewRoutesFactory(group *gin.RouterGroup) func(service books.BookService) {
 		})
 
 		group.GET("/:authorId/books/:bookId", func(c *gin.Context) {
-			_, err := strconv.Atoi(c.Param("authorId"))
+			authorId, err := strconv.Atoi(c.Param("authorId"))
 			if err != nil {
 				appError := domainErrors.NewAppErrorWithType(domainErrors.NotFound)
 				c.Error(appError)
@@ -54,7 +76,7 @@ func NewRoutesFactory(group *gin.RouterGroup) func(service books.BookService) {
 				return
 			}
 
-			result, err := service.ReadBook(id)
+			result, err := service.ReadBook(id, authorId)
 			if err != nil {
 				c.Error(err)
 				return

@@ -1,8 +1,6 @@
 package books
 
 import (
-	"fmt"
-
 	"github.com/jinzhu/gorm"
 	"github.com/pkg/errors"
 
@@ -38,7 +36,6 @@ func (s *Store) AddAuthorFKConstraint() {
 
 func (s *Store) CreateBook(book *domain.Book) (*domain.Book, error) {
 	entity := toDBModel(book)
-	fmt.Println(*entity)
 	if err := s.db.Create(entity).Error; err != nil {
 		appErr := domainErrors.NewAppError(errors.Wrap(err, createError), domainErrors.RepositoryError)
 		return nil, appErr
@@ -47,10 +44,9 @@ func (s *Store) CreateBook(book *domain.Book) (*domain.Book, error) {
 	return toDomainModel(entity), nil
 }
 
-func (s *Store) ReadBook(id int) (*domain.Book, error) {
+func (s *Store) ReadBook(id int, authorId int) (*domain.Book, error) {
 	result := &Book{}
-
-	query := s.db.Where("id = ?", id).First(result)
+	query := s.db.Where("id = ? AND author_id >= ?", id, authorId).First(result)
 
 	if query.RecordNotFound() {
 		appErr := domainErrors.NewAppErrorWithType(domainErrors.NotFound)
