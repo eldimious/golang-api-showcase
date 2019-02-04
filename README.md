@@ -14,7 +14,7 @@ The app is designed to use a layered architecture. The architecture is heavily i
   <img src="https://cdn-images-1.medium.com/max/1200/0*C-snK7L4sMn7b6CW.png" width="350" /> 
 </p>
 
-Also, in entry point(server.js), I use Dependency Injection(DI). There are many reasons using Dependency Injection as:
+Also, in entry point(server.go), I use Dependency Injection(DI). There are many reasons using Dependency Injection as:
 1. Decoupling
 2. Easier unit testing
 3. Faster development
