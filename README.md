@@ -66,3 +66,11 @@ then run the following command:
 ```shell
 docker-compose up
 ```
+
+## Support Me
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y797KCA)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
